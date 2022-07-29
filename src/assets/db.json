@@ -1,0 +1,42 @@
+{
+  "empleados": [
+    {
+      "id": 1,
+      "cedula": "1718811142",
+      "nombres": "Juan Leonardo",
+      "apellidos": "Maldonado Moyolema",
+      "correo": "jleobro@hotmail.com",
+      "passwordU": "1718811142"
+    },
+    {
+      "id": 2,
+      "cedula": "1718811111",
+      "nombres": "Jhon Leo",
+      "apellidos": "Mal Moy",
+      "correo": "jleobro@hotmail.com",
+      "passwordU": "1718811111"
+    },
+    {
+      "id": 3,
+      "cedula": "1718821111",
+      "nombres": "Jhon Leo",
+      "apellidos": "Mal Moy",
+      "correo": "jleobro@hotmail.com",
+      "passwordU": "1718821111"
+    },
+    {
+      "cedula": "1714639810",
+      "nombres": "loc",
+      "apellidos": "loc loc",
+      "correo": "jleobro@gmail.com",
+      "passwordU": "1714639810",
+      "id": 4
+    }
+  ],
+  "administrador": [
+    {
+      "nombre": "calambrina1",
+      "contraseña": "12345"
+    }
+  ]
+}

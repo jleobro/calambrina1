@@ -1,0 +1,82 @@
+<h2 style="align-content: center;" *ngIf="!flag">INICIAR SESIÓN ADMINISTRADOR</h2>
+<h2 style="align-content: center;" *ngIf="flag">ADMINISTRADOR {{administrador}}</h2>
+
+  <br/>
+  <div className="containerPrincipal" *ngIf="!flag">
+      <div className="containerSecundario">
+          <div className="form-group">
+              
+                  <label>Administrador:</label>
+                  <br/>
+                  <input type="text" className="form-control" 
+                  autocomplete="off" [(ngModel)]="administrador"/>
+                  <br/>
+                  <label>Contraseña:</label>
+                  <br/>
+                  <input type="password" className="form-control" 
+                  [(ngModel)]="password"/>
+                  <br/>
+                  <button type="submit" (click)="login()" className="btn btn-primary" >Iniciar Sesión</button>
+              
+          </div>
+
+      </div>
+
+  </div>
+  <div *ngIf="flag">
+    <button type="button" *ngIf="opcion==='listar'" (click)="opcion='registrar'">REGISTRAR</button>
+    <!-- <button type="button" (click)="opcion='editar'">EDITAR</button> -->
+    <!-- <button type="button" (click)="opcion='listar'">LISTAR</button> -->
+    <!-- <button type="button" (click)="opcion='eliminar'">ELIMINAR</button> -->
+  </div>
+  <div *ngIf="flag">
+    <!-- registrar -->
+    <div *ngIf="opcion==='registrar' || opcion==='editar' || opcion==='eliminar'">
+      <input type="text" placeholder="Ingrese Cédula" [(ngModel)]="empleado.cedula" maxlength="10" required/><br/>
+      <input type="text" placeholder="Ingrese Nombres" [(ngModel)]="empleado.nombres" maxlength="100" required/><br/>
+      <input type="text" placeholder="Ingrese Apellidos" [(ngModel)]="empleado.apellidos" maxlength="100" required/><br/>
+      <input placeholder="Ingrese Correo Electrónico" [(ngModel)]="empleado.correo"  type="email" id="email"
+      pattern=".+@globex\.com" size="30" required/><br/>
+      <button type="submit" *ngIf="opcion==='registrar'" (click)="crearEmpleado()" >Registrar</button><br/>
+      <button type="submit" *ngIf="opcion==='editar'" (click)="editarEmpleadoServicio()" >Editar</button><br/>
+      <button type="submit" *ngIf="opcion==='eliminar'" (click)="eliminarEmpleadoServicio()" >Eliminar</button><br/>
+      <button type="submit" (click)="opcion='listar';obtenerEmpleados();" >Cancelar</button><br/>
+    </div>
+    <!-- editar -->
+    <!-- <div *ngIf="opcion=='editar'">''
+      <input type="text" placeholder="Ingrese Cédula" [(ngModel)]="empleado.cedula"/><br/>
+      <input type="text" placeholder="Ingrese Nombres" [(ngModel)]="empleado.nombres"/><br/>
+      <input type="text" placeholder="Ingrese Apellidos" [(ngModel)]="empleado.apellidos"/><br/>
+      <input type="text" placeholder="Ingrese Correo Electrónico" [(ngModel)]="empleado.correo"/><br/>
+    </div> -->
+    <!-- listar -->
+    <div *ngIf="opcion=='listar'">
+      <p-table [value]="empleados">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Cedula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-empleado>
+            <tr>
+                <td>{{empleado.cedula}}</td>
+                <td>{{empleado.nombres}}</td>
+                <td>{{empleado.apellidos}}</td>
+                <td>{{empleado.correo}}</td>
+                <td>
+                  <button type="button" (click)="opcion='editar';editarEmpleado(empleado)">EDITAR</button>
+                  <button type="button" (click)="opcion='eliminar';editarEmpleado(empleado)">ELIMINAR</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    <!-- eliminar -->
+    <div *ngIf="opcion=='eliminar'">
+
+  </div>
+  </div>
